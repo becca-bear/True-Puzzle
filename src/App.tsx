@@ -4,8 +4,16 @@ import "./puzzle.css";
 
 const rows: number = 5;
 const columns: number = 5;
-// js array shuffle
 
+
+function shuffleArray(array:React.ReactNode[] = []) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
 function App() {
   const tiles: React.ReactNode[] = [];
   for (let r: number = 0; r < 25; r++) {
@@ -33,15 +41,9 @@ function App() {
         key={imageNumber}
       ></img>
     );
+ 
   }
-  const shuffleArray = (pieces: any) => {
-    for (let i = pieces.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * i);
-      const temp = pieces[i];
-      pieces[i] = pieces[j];
-      pieces[j] = temp;
-    }
-  };
+shuffleArray(pieces)
 
   return (
     <div className="App">
